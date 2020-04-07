@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/201909291533113.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NqNDYxNzMzMzg3,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190929153630466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NqNDYxNzMzMzg3,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-04-07T09:44:10.000Z">
-<meta property="article:modified_time" content="2020-04-07T13:54:07.521Z">
+<meta property="article:modified_time" content="2020-04-07T09:44:10.000Z">
 <meta property="article:author" content="Joey Chen">
 <meta property="article:tag" content="YALMIP">
 <meta property="article:tag" content="MATLAB">
@@ -326,7 +326,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-04-07T21:54:07+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-04-07T17:44:10+08:00">
                 2020-04-07
               </time>
             
@@ -345,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Operational-Research/" itemprop="url" rel="index">
-                    <span itemprop="name">Operational Research</span>
+                  <a href="/categories/OR/" itemprop="url" rel="index">
+                    <span itemprop="name">OR</span>
                   </a>
                 </span>
 
@@ -357,6 +357,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/07/YALMIP%20toolbox%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2020/04/07/YALMIP toolbox 的简单例子/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -563,7 +574,14 @@ x_star =
 
   
     <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
+
   
 
 
@@ -850,6 +868,26 @@ x_star =
 
   
 
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2020/04/07/YALMIP%20toolbox%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/';
+          this.page.identifier = '2020/04/07/YALMIP toolbox 的简单例子/';
+          this.page.title = 'YALMIP toolbox 的简单例子';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -875,6 +913,28 @@ x_star =
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'KUs2z3yWUTtC51gtOLlpLE7E-gzGzoHsz',
+        appKey: 'lb8LgVTI6peTixdu9d91SJp0',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
