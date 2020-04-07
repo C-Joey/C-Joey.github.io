@@ -3,7 +3,8 @@
   <entry>
     <title>YALMIP toolbox 的简单例子</title>
     <url>/2020/04/07/YALMIP%20toolbox%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<p>yalmip是一个在matlab内的建模工具包，能够用一套统一的建模语言来构建约束，调用其他的求解器，减少了单独学习其他语言的浪费，我根据论文</p>
+    <content><![CDATA[<p><strong>这是去年写的一篇部署的博客现在迁移过来for test</strong></p>
+<p>yalmip是一个在matlab内的建模工具包，能够用一套统一的建模语言来构建约束，调用其他的求解器，减少了单独学习其他语言的浪费，我根据论文</p>
 <blockquote>
 <p>俞武扬. YALMIP工具箱在运筹学实验教学中的应用[J]. 实验室研究与探索, 2017(8).</p>
 </blockquote>
@@ -19,22 +20,8 @@
 \begin{array}{l}{\min Z=C X} \\ {\text { s.t. }\left\{\begin{array}{l}{A X=b} \\ {X \geqslant 0}\end{array}\right.}\end{array}</script><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><script type="math/tex; mode=display">
 \min Z=12 x_{1}+5 x_{2}+8 x_{3}\\
 \text { s.t. }\left\{\begin{array}{l}{2 x_{1}+3 x_{2}+x_{3} \geqslant 30} \\ {4 x_{1}+x_{2}+5 x_{3} \geqslant 15} \\ {x_{1}, x_{2}, x_{3} \geqslant 0}\end{array}\right.</script><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear;clc;close all;</span><br><span class="line"></span><br><span class="line">c = [<span class="number">12</span> <span class="number">5</span> <span class="number">8</span>];</span><br><span class="line">A = [<span class="number">2</span> <span class="number">3</span> <span class="number">1</span>; <span class="number">4</span> <span class="number">1</span> <span class="number">5</span>];</span><br><span class="line">b = [<span class="number">30</span>; <span class="number">15</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">%决策变量</span></span><br><span class="line">x = sdpvar(<span class="number">3</span>,<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">%目标函数</span></span><br><span class="line">z = c*x;</span><br><span class="line"></span><br><span class="line"><span class="comment">%添加约束</span></span><br><span class="line"><span class="comment">%C = [];</span></span><br><span class="line"><span class="comment">%C = [C; A*x &gt;= b];</span></span><br><span class="line"><span class="comment">%C = [C;x&gt;=0];</span></span><br><span class="line">C=[A*x &gt;= b,x&gt;=<span class="number">0</span>];</span><br><span class="line">ops=sdpsettings(<span class="string">'verbose'</span>,<span class="number">0</span>);</span><br><span class="line"><span class="comment">%求解</span></span><br><span class="line">result = optimize(C,z,ops);</span><br><span class="line"><span class="keyword">if</span> result.problem == <span class="number">0</span>    <span class="comment">%求解成功</span></span><br><span class="line">    x_star=double(x)</span><br><span class="line">    z_star=double(z)</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    <span class="built_in">disp</span>(<span class="string">'求解过程中出错'</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<pre><code>警告: 文件: C:\Program Files\IBM\ILOG\CPLEX_Studio_Community128\cplex\matlab\x64_win64\@Cplex\Cplex.p 行: 965 列: 0
-在嵌套函数中定义 &quot;changedParam&quot; 会将其与父函数共享。在以后的版本中，要在父函数和嵌套函数之间共享 &quot;changedParam&quot;，请在父函数中显式定义它。
-&gt; In cplexoptimset
-  In sdpsettings&gt;setup_cplex_options (line 617)
-  In sdpsettings (line 145)
-
-x_star =
-
-         0
-    9.6429
-    1.0714
-
-z_star =
-
-   56.7857
-</code></pre><p>​<br>​    </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">警告: 文件: C:\Program Files\IBM\ILOG\CPLEX_Studio_Community128\cplex\matlab\x64_win64\@Cplex\Cplex.p 行: 965 列: 0</span><br><span class="line">在嵌套函数中定义 "changedParam" 会将其与父函数共享。在以后的版本中，要在父函数和嵌套函数之间共享 "changedParam"，请在父函数中显式定义它。</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> In cplexoptimset</span></span><br><span class="line">  In sdpsettings&gt;setup_cplex_options (line 617)</span><br><span class="line">  In sdpsettings (line 145)</span><br><span class="line"></span><br><span class="line">x_star =</span><br><span class="line"></span><br><span class="line">         0</span><br><span class="line">    9.6429</span><br><span class="line">    1.0714</span><br><span class="line">  </span><br><span class="line">z_star =</span><br><span class="line"></span><br><span class="line">   56.7857</span><br></pre></td></tr></table></figure>
+<p>​<br>​    </p>
 <h1 id="运输问题"><a href="#运输问题" class="headerlink" title="运输问题"></a>运输问题</h1><h2 id="model-1"><a href="#model-1" class="headerlink" title="model"></a>model</h2><script type="math/tex; mode=display">
 \min Z=\sum_{i=1}^{m} \sum_{j=1}^{n} c_{i j} x_{i j}\\
 \text { s.t. }\left\{\begin{array}{ll}{\sum\limits_{j=1}^{n} x_{i j} \leqslant a_{i},} & {i=1,2, \cdots, m} \\ {\sum\limits_{i=1}^{m} x_{i j} \geqslant b_{j},} & {j=1,2, \cdots, n} \\ {x_{i j} \geqslant 0,} & {i=1,2, \cdots, m ; j=1,2, \cdots, n}\end{array}\right.</script><p><img src="https://img-blog.csdnimg.cn/20190929153054987.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NqNDYxNzMzMzg3,size_16,color_FFFFFF,t_70" alt="运输问题"></p>
@@ -87,7 +74,7 @@ z_star =
 z_star =
 
      5
-</code></pre><p>​<br>​    </p>
+</code></pre><p>​    </p>
 <h1 id="指派问题"><a href="#指派问题" class="headerlink" title="指派问题"></a>指派问题</h1><h2 id="model-3"><a href="#model-3" class="headerlink" title="model"></a>model</h2><script type="math/tex; mode=display">
 \min Z=\sum_{i=1}^{n} \sum_{j=1}^{n} c_{i j} x_{i j}\\
 \text { s.t. }\left\{\begin{array}{ll}{\sum_{i=1}^{n} x_{i j}=1,} & {j=1,2, \cdots, n} \\ {\sum_{j=1}^{n} x_{i j}=1,} & {i=1,2, \cdots, n} \\ {x_{i j} \in\{0,1\},} & {i, j=1,2, \cdots, n}\end{array}\right.</script><h2 id="例子-3"><a href="#例子-3" class="headerlink" title="例子"></a>例子</h2><p><img src="https://img-blog.csdnimg.cn/20190929153630466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NqNDYxNzMzMzg3,size_16,color_FFFFFF,t_70" alt="指派问题"></p>
@@ -144,5 +131,10 @@ x_star =
       <tags>
         <tag>hola</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>templet</title>
+    <url>/2020/04/07/templet/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
