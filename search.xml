@@ -140,6 +140,11 @@ x_star =
 ]]></content>
   </entry>
   <entry>
+    <title>templet</title>
+    <url>/2020/04/07/templet/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>背包问题</title>
     <url>/2020/07/06/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<script type="math/tex; mode=display">
@@ -167,10 +172,5 @@ x_{5} \leq 0 \\
 A solution x is
 [10. 12. 12. -0.  0.]
 </code></pre>]]></content>
-  </entry>
-  <entry>
-    <title>templet</title>
-    <url>/2020/04/07/templet/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>
